@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Status } from "../generated/prisma/client";
+import { Status } from "../src/generated/prisma/client";
 import { prisma } from "../src/lib/prisma.js";
 
 async function main() {
@@ -7,11 +7,7 @@ async function main() {
     await prisma.category.deleteMany();
 
     await prisma.category.createMany({
-        data: [
-            { name: "Work" },
-            { name: "Home" },
-            { name: "Shopping" },
-        ],
+        data: [{ name: "Work" }, { name: "Home" }, { name: "Shopping" }],
     });
 
     const categories = await prisma.category.findMany();

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import todosRouter from "./todosRouter";
-import categoryRouter from "./categoryRouter";
+import todosRouter from "./todosRouter.js";
+import categoryRouter from "./categoryRouter.js";
 
 const indexRouter: Router = Router();
 

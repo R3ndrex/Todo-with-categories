@@ -1,5 +1,5 @@
-import ApiError from "../error/ApiError";
-import todosService from "../services/todosService";
+import ApiError from "../error/ApiError.js";
+import todosService from "../services/todosService.js";
 import type { Response, Request } from "express";
 class TodosController {
     async getAll(req: Request, res: Response) {
