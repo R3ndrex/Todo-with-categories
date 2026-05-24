@@ -1,13 +1,22 @@
 import "dotenv/config";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { PrismaClient } from "../generated/prisma/client.js";
 
-if (!process.env.DATABASE_URL) {
-    throw new Error("DB URL is not specified");
-}
-const connectionString = process.env.DATABASE_URL;
+const databaseUrl = process.env.TURSO_DATABASE_URL ?? process.env.DATABASE_URL;
+const authToken = process.env.TURSO_AUTH_TOKEN;
 
-const adapter = new PrismaBetterSqlite3({ url: connectionString });
+if (!databaseUrl) {
+    throw new Error("TURSO_DATABASE_URL is not specified");
+}
+
+if (!authToken) {
+    throw new Error("TURSO_AUTH_TOKEN is not specified");
+}
+
+const adapter = new PrismaLibSql({
+    url: databaseUrl,
+    authToken,
+});
 const prisma = new PrismaClient({ adapter });
 
 export { prisma };
