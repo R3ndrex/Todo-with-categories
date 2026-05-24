@@ -1,4 +1,5 @@
 import ApiError from "../error/ApiError.js";
+import categoryService from "../services/categoryService.js";
 import todosService from "../services/todosService.js";
 import type { Response, Request } from "express";
 class TodosController {
@@ -9,6 +10,10 @@ class TodosController {
     async create(req: Request, res: Response) {
         const { name, categoryId } = req.body;
         if (name && categoryId) {
+            const tooMuch = await categoryService.checkAmount(categoryId);
+            if (tooMuch) {
+                throw ApiError.BadRequest();
+            }
             const createdTodo = await todosService.create(name, categoryId);
             return res.status(201).json({ data: createdTodo });
         }
