@@ -6,6 +6,8 @@ export const paramsTodoSchema = z.object({
     }),
 });
 export const createTodoSchema = z.object({
-    categoryId: z.uuid(),
-    name: z.string().min(1),
+    body: z.object({
+        categoryId: z.uuid(),
+        name: z.string().min(1),
+    }),
 });
