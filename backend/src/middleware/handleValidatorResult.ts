@@ -14,12 +14,9 @@ export const validate =
         } catch (error) {
             if (error instanceof ZodError) {
                 return res.status(400).json({
-                    status: "fail",
                     errors: error.issues,
                 });
             }
-            return res
-                .status(500)
-                .json({ status: "error", message: "Internal Server Error" });
+            return res.status(500).json({ message: "Internal Server Error" });
         }
     };
