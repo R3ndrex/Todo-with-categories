@@ -14,7 +14,7 @@ export default class ApiError extends Error {
         return new ApiError(message || "Not Found", 404);
     }
     static BadRequest() {
-        return new ApiError("Bad Request", 404);
+        return new ApiError("Bad Request", 400);
     }
     static InternalServer() {
         return new ApiError("Internal Server Error", 500);
