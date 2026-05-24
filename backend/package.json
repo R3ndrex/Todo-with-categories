@@ -7,19 +7,12 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "node ./dist/server.js",
-        "build": "pnpm exec tsc",
-        "seed": "pnpm exec tsx prisma/seed.ts"
+        "build": "npm run tsc",
+        "seed": "npm run tsx prisma/seed.ts"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "devEngines": {
-        "packageManager": {
-            "name": "pnpm",
-            "version": "^11.2.2",
-            "onFail": "download"
-        }
-    },
     "devDependencies": {
         "@types/better-sqlite3": "^7.6.13",
         "@types/node": "^25.9.1",
