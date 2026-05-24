@@ -7,13 +7,11 @@ export default function ErrorHandler(
     next: NextFunction,
 ) {
     if (ApiError.isApiError(error)) {
-        return res.render("pages/error", {
+        return res.status(error.status).json({
             message: error.message,
-            status: error.status,
         });
     }
-    return res.render("pages/error", {
+    return res.status(500).json({
         message: "Internal Server Error",
-        status: 500,
     });
 }
