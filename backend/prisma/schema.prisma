@@ -20,10 +20,10 @@ enum Status {
 model Category {
   id    String @id @default(uuid())
   name  String
-  tasks Task[]
+  tasks Todo[]
 }
 
-model Task {
+model Todo {
   id         String    @id @default(uuid())
   name       String
   status     Status    @default(UNDONE)
