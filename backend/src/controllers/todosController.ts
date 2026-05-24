@@ -1,7 +1,33 @@
+import ApiError from "../error/ApiError";
+import todosService from "../services/todosService";
+import type { Response, Request } from "express";
 class TodosController {
-    getAll() {}
-    create() {}
-    updateStatus() {}
-    delete() {}
+    async getAll(req: Request, res: Response) {
+        const todos = await todosService.getAll();
+        return res.json({ data: todos });
+    }
+    async create(req: Request, res: Response) {
+        const { name, categoryId } = req.body;
+        if (name && categoryId) {
+            const createdTodo = await todosService.create(name, categoryId);
+            return res.status(201).json({ data: createdTodo });
+        }
+        throw ApiError.BadRequest();
+    }
+    async updateStatus(req: Request<{ id: string }>, res: Response) {
+        const { id } = req.params;
+        if (id) {
+            const updatedTodo = await todosService.updateStatus(id);
+            return res.status(201).json({ data: updatedTodo });
+        }
+        throw ApiError.BadRequest();
+    }
+    async delete(req: Request<{ id: string }>, res: Response) {
+        const { id } = req.params;
+        if (id) {
+            const updatedTodo = await todosService.delete(id);
+            return res.status(201).json({ data: updatedTodo });
+        }
+    }
 }
 export default new TodosController();
