@@ -6,6 +6,7 @@ import indexRouter from "./routes/indexRoute.js";
 
 const app: Express = express();
 
+app.use(express.json());
 app.use("/api", indexRouter);
 app.use((req, res) => {
     throw ApiError.NotFound();
