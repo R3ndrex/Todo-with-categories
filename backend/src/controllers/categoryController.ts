@@ -1,6 +1,8 @@
+import categoryService from "../services/categoryService";
+
 class CategoryController {
-    getAll() {
-        return [];
+    async getAll() {
+        return await categoryService.getAll();
     }
 }
 export default new CategoryController();
