@@ -18,7 +18,7 @@ class CategoryService {
         if (!todosInCategory) {
             throw ApiError.BadRequest();
         }
-        return MAX_TODOS_PER_CATEGORY >= todosInCategory?.tasks.length;
+        return todosInCategory.tasks.length >= MAX_TODOS_PER_CATEGORY;
     }
 }
 export default new CategoryService();
