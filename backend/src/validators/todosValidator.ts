@@ -7,5 +7,5 @@ export const paramsTodoSchema = z.object({
 });
 export const createTodoSchema = z.object({
     categoryId: z.uuid(),
-    name: z.string(),
+    name: z.string().min(1),
 });
