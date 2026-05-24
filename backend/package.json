@@ -9,6 +9,7 @@
         "dev": "node ./dist/server.js",
         "build": "prisma generate && tsc",
         "generate": "prisma generate",
+        "db:init:turso": "node scripts/init-turso.mjs",
         "seed": "npm run tsx prisma/seed.ts"
     },
     "keywords": [],
